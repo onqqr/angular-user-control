@@ -1,0 +1,37 @@
+main {
+  display: flex;
+  width: 600px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border: 1px solid black;
+  padding: 40px;
+  background-color: aliceblue;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap:2px;
+
+  strong {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: 15px;
+    padding-left: 15px;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    background-color: rgb(146, 172, 249);
+  }
+}
