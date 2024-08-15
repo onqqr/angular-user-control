@@ -1,29 +1,27 @@
 <mat-card>
   <mat-card-title>Welcome!</mat-card-title>
   <mat-card-content>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field>
           <input
-            type="text"
             matInput
+            type="text"
             placeholder="Username"
             formControlName="username"
           />
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field>
           <input
-            type="email"
             matInput
+            type="email"
             placeholder="Email"
             formControlName="email"
           />
         </mat-form-field>
       </p>
-
       <div class="button">
         <button mat-raised-button type="submit">Login</button>
       </div>

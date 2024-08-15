@@ -1,13 +1,16 @@
-<main>
-  <section class="left">
-    <strong>ANGULAR USER CONTROL</strong>
-    <label>FireBase</label>
-    <label>Material</label>
-    <label>RxJS</label>
-    <label>SignalStore</label>
-  </section>
-  <section class="right">
-    <button mat-flat-button>Login</button>
-    <button mat-flat-button>Register</button>
-  </section>
-</main>
+@if (router.url !== '/login') {
+  <main>
+    <section class="left">
+      <strong>ANGULAR USER CONTROL</strong>
+      <span>FireBase</span>
+      <span>Material</span>
+      <span>RxJS</span>
+      <span>SignalStore</span>
+    </section>
+    <section class="right">
+      <button mat-raised-button (click)="onSubmit()">Login</button>
+      <button mat-raised-button>Register</button>
+    </section>
+  </main>
+}
+<router-outlet></router-outlet>
