@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -18,11 +24,12 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class LoginPageComponent implements OnInit {
   public form!: FormGroup;
+  public fb = inject(FormBuilder);
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl(''),
-      email: new FormControl(''),
+    this.form = this.fb.group({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
 
