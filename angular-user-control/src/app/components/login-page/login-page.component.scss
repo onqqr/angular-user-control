@@ -30,8 +30,10 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: center;
-  
+  margin-top: 40px;
+
   button {
+    width: 100%;
     background-color: rgb(146, 172, 249);
   }
 }

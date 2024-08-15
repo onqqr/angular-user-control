@@ -23,7 +23,11 @@ export class AppComponent {
 
   }
 
-  onSubmit() {
+  onGoLogin() {
     this.router.navigate(['login']);
+  }
+
+  onGoRegister() {
+    this.router.navigate(['register']);
   }
 }

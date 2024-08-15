@@ -1,4 +1,4 @@
-@if (router.url !== '/login') {
+@if (router.url !== '/login' && router.url !== '/register') {
   <main>
     <section class="left">
       <strong>ANGULAR USER CONTROL</strong>
@@ -8,8 +8,8 @@
       <span>SignalStore</span>
     </section>
     <section class="right">
-      <button mat-raised-button (click)="onSubmit()">Login</button>
-      <button mat-raised-button>Register</button>
+      <button mat-raised-button (click)="onGoLogin()">Sign In</button>
+      <button mat-raised-button (click)="onGoRegister()">Create account</button>
     </section>
   </main>
 }
