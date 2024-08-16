@@ -1,7 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -9,6 +8,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -24,14 +25,32 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class LoginPageComponent implements OnInit {
   public form!: FormGroup;
-  public fb = inject(FormBuilder);
+  public errorMessage!: string | null;
+
+  constructor(
+    public router: Router,
+    private authService: AuthService,
+    public fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required],
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const rawForm = this.form.getRawValue();
+    this.authService
+      .onLogin(rawForm.email, rawForm.password)
+      .subscribe({
+        next: () => {
+          this.router.navigateByUrl('main');
+        },
+        error: () => {
+          this.errorMessage = '⚠ Please, fill the form';
+        },
+      });
+  }
 }

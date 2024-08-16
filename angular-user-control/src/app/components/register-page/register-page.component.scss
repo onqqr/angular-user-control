@@ -20,11 +20,16 @@ mat-card-content {
   justify-content: center;
 }
 
+.input-pass {
+  position: relative;
+}
+
 .error {
-  padding: 16px;
-  width: 300px;
-  color: white;
-  background-color: red;
+  font-size: 15px;
+  position: absolute;
+  bottom: 90px;
+  padding: 8px;
+  color: red;
 }
 
 .button {

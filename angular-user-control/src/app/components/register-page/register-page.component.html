@@ -24,6 +24,21 @@
           />
         </mat-form-field>
       </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            class="input-pass"
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+      @if (errorMessage) {
+        <div class="error">{{ errorMessage }}</div>
+      }
       <div class="button">
         <button mat-raised-button type="submit">Register</button>
       </div>

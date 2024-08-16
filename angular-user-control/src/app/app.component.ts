@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,21 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(public router: Router, public authService: AuthService) {}
 
-  constructor(public router: Router) {
-
+  ngOnInit(): void {
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+        this.authService.markerUser.set({
+          email: user.email!,
+          username: user.displayName!,
+        });
+      } else {
+        this.authService.markerUser.set(null);
+      }
+      console.log(this.authService.markerUser());
+    });
   }
 
   onGoLogin() {
